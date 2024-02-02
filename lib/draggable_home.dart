@@ -149,10 +149,10 @@ class _DraggableHomeState extends State<DraggableHome> {
     final double fullyExpandedHeight =
         MediaQuery.of(context).size.height * (widget.stretchMaxHeight);
 
-    return Container(
-      color:
-          widget.backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
-      child: NotificationListener<ScrollNotification>(
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      drawer: widget.drawer,
+      body: NotificationListener<ScrollNotification>(
         onNotification: (notification) {
           if (notification.metrics.axis == Axis.vertical) {
             // isFullyCollapsed
@@ -173,6 +173,11 @@ class _DraggableHomeState extends State<DraggableHome> {
         child: sliver(context, appBarHeight, fullyExpandedHeight,
             expandedHeight, topPadding),
       ),
+      bottomSheet: widget.bottomSheet,
+      bottomNavigationBar: widget.bottomNavigationBar,
+      floatingActionButton: widget.floatingActionButton,
+      floatingActionButtonLocation: widget.floatingActionButtonLocation,
+      floatingActionButtonAnimator: widget.floatingActionButtonAnimator,
     );
   }
 
