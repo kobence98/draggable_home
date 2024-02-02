@@ -150,7 +150,8 @@ class _DraggableHomeState extends State<DraggableHome> {
         MediaQuery.of(context).size.height * (widget.stretchMaxHeight);
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor:
+          widget.backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
       drawer: widget.drawer,
       body: NotificationListener<ScrollNotification>(
         onNotification: (notification) {
@@ -284,10 +285,8 @@ class _DraggableHomeState extends State<DraggableHome> {
     return Container(
       height: widget.curvedBodyRadius,
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Colors.white, Colors.cyan.shade50]),
+        color:
+            widget.backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(widget.curvedBodyRadius),
         ),
@@ -307,8 +306,7 @@ class _DraggableHomeState extends State<DraggableHome> {
                 height: MediaQuery.of(context).size.height -
                     topHeight -
                     bottomPadding,
-                color: widget.backgroundColor ??
-                    Theme.of(context).scaffoldBackgroundColor,
+                color: Colors.transparent,
               ),
               Column(
                 children: [
